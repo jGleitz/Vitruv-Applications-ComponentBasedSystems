@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Component-Based Systems Application Test Utilities
+Bundle-SymbolicName: tools.vitruv.applications.cbs.testutils
+Bundle-Version: 0.1.0.qualifier
+Automatic-Module-Name: tools.vitruv.applications.cbs.testutils
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: tools.vitruv.testutils,
+ tools.vitruv.domains.uml,
+ tools.vitruv.domains.pcm,
+ tools.vitruv.domains.java,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro

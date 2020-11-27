@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>tools.vitruv.applications.util.temporary</module>
+		<module>tools.vitruv.applications.cbs.testutils</module>
 	</modules>
 
 </project>
