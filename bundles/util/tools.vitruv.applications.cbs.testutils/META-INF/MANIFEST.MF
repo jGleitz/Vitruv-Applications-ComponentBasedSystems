@@ -12,4 +12,7 @@ Require-Bundle: tools.vitruv.testutils,
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
- org.eclipse.xtend.lib.macro
+ org.eclipse.xtend.lib.macro,
+ edu.kit.ipd.sdq.activextendannotations,
+ org.hamcrest.core
+Export-Package: tools.vitruv.applications.cbs.testutils

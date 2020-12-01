@@ -6,11 +6,20 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.xtend.lib.annotations.Accessors
-import tools.vitruv.dsls.commonalities.testutils.CommonalitiesExecutionTest
 
 import static org.junit.Assert.*
+import tools.vitruv.testutils.VitruviusApplicationTest
+import tools.vitruv.applications.cbs.commonalities.CbsCommonalitiesApplication
 
-abstract class AbstractCBSCommonalitiesExecutionTest extends CommonalitiesExecutionTest {
+abstract class CBSCommonalitiesExecutionTest extends VitruviusApplicationTest {
+
+	override createChangePropagationSpecifications() {
+		new CbsCommonalitiesApplication().changePropagationSpecifications
+	}
+
+	override getVitruvDomains() {
+		createChangePropagationSpecifications().flatMap[#[sourceDomain, targetDomain]].toSet
+	}
 
 	@Accessors(PROTECTED_GETTER)
 	val VitruvApplicationTestAdapter vitruvApplicationTestAdapter = createVitruvApplicationTestAdapter()

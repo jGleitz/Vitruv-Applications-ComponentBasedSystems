@@ -4,7 +4,6 @@ import java.util.List
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.oo.java.JavaInterfaceMethodTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.oo.uml.UmlInterfaceMethodTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModel
@@ -12,6 +11,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModelsProvid
 import tools.vitruv.applications.cbs.commonalities.tests.util.java.JavaTestModelsProvider
 import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParametersRunnerFactory
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)

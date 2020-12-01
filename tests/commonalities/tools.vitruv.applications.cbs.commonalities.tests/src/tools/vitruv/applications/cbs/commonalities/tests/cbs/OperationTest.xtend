@@ -4,7 +4,6 @@ import java.util.List
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.java.JavaOperationTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.pcm.PcmOperationTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.uml.UmlOperationTestModels
@@ -16,6 +15,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParame
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
 
 import static extension tools.vitruv.applications.cbs.commonalities.tests.util.ParameterizedTestUtil.*
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -24,9 +24,9 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 	@Parameterized.Parameters(name='{0} to {1}')
 	static def List<Object[]> testParameters() {
 		val domainModelsProviders = #[
-			new PcmTestModelsProvider [new PcmOperationTestModels(it)],
-			new UmlTestModelsProvider [new UmlOperationTestModels(it)],
-			new JavaTestModelsProvider [new JavaOperationTestModels(it)]
+			new PcmTestModelsProvider[new PcmOperationTestModels(it)],
+			new UmlTestModelsProvider[new UmlOperationTestModels(it)],
+			new JavaTestModelsProvider[new JavaOperationTestModels(it)]
 		]
 		return domainModelsProviders.orderedPairs
 	}
@@ -42,11 +42,9 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 		static val STRING_PARAMETER_NAME = 'stringInput'
 
 		// Empty
-
 		def DomainModel emptyOperationCreation()
 
 		// Return type
-
 		/**
 		 * Operation with integer return type and no inputs.
 		 */
@@ -55,7 +53,6 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel operationWithStringReturnCreation()
 
 		// Input parameters
-
 		def DomainModel operationWithIntegerInputCreation()
 
 		/**
@@ -66,7 +63,6 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel operationWithStringInputCreation()
 
 		// Mixed input and return types
-
 		/**
 		 * Operation with an integer and String input parameter and an integer
 		 * return type.
@@ -74,7 +70,6 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel operationWithMixedInputsAndReturnCreation()
 
 		// Multiple operations
-
 		/**
 		 * Both operations have an integer return type. The first operation has
 		 * a boolean input parameter, the second has a String input parameter.
@@ -92,7 +87,6 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Empty
-
 	@Test
 	def void emptyOperationCreation() {
 		sourceModels.emptyOperationCreation.createAndSynchronize()
@@ -100,7 +94,6 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Return type
-
 	@Test
 	def void operationWithIntegerReturnCreation() {
 		sourceModels.operationWithIntegerReturnCreation.createAndSynchronize()
@@ -114,7 +107,6 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Input parameters
-
 	@Test
 	def void operationWithIntegerInputCreation() {
 		sourceModels.operationWithIntegerInputCreation.createAndSynchronize()
@@ -134,7 +126,6 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Mixed input and return types
-
 	@Test
 	def void operationWithMixedInputsAndReturnCreation() {
 		sourceModels.operationWithMixedInputsAndReturnCreation.createAndSynchronize()
@@ -142,12 +133,11 @@ class OperationTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Multiple operations
-
 	@Test
 	def void multipleOperationsCreation() {
 		sourceModels.multipleOperationsCreation.createAndSynchronize()
 		targetModels.multipleOperationsCreation.check()
 	}
 
-	// TODO renaming
+// TODO renaming
 }

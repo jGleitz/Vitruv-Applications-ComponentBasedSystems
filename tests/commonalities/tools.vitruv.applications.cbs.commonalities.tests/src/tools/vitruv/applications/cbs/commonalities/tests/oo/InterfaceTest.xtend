@@ -4,7 +4,6 @@ import java.util.List
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.oo.java.JavaInterfaceTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.oo.uml.UmlInterfaceTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModel
@@ -14,6 +13,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParame
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
 
 import static extension tools.vitruv.applications.cbs.commonalities.tests.util.ParameterizedTestUtil.*
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -22,8 +22,8 @@ class InterfaceTest extends CBSCommonalitiesExecutionTest {
 	@Parameterized.Parameters(name='{0} to {1}')
 	static def List<Object[]> testParameters() {
 		val domainModelsProviders = #[
-			new UmlTestModelsProvider [new UmlInterfaceTestModels(it)],
-			new JavaTestModelsProvider [new JavaInterfaceTestModels(it)]
+			new UmlTestModelsProvider[new UmlInterfaceTestModels(it)],
+			new JavaTestModelsProvider[new JavaInterfaceTestModels(it)]
 		]
 		return domainModelsProviders.orderedPairs
 	}
@@ -40,19 +40,17 @@ class InterfaceTest extends CBSCommonalitiesExecutionTest {
 		static val INTERFACE_3_NAME = 'Baz'
 
 		// Empty interface
-
 		/**
 		 * An interface with only the minimally required attributes.
 		 */
 		def DomainModel emptyInterfaceCreation()
 
 		// Multiple interfaces
-
 		def DomainModel multipleInterfacesInSamePackageCreation()
+
 		def DomainModel multipleInterfacesInDifferentPackagesCreation()
 
 		// Super interfaces
-
 		/**
 		 * Interface 1 extending interface 2 from the same package.
 		 */
@@ -74,7 +72,6 @@ class InterfaceTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Empty interface
-
 	@Test
 	def void emptyInterfaceCreation() {
 		sourceModels.emptyInterfaceCreation.createAndSynchronize()
@@ -82,7 +79,6 @@ class InterfaceTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Multiple interfaces
-
 	@Test
 	def void multipleInterfacesInSamePackageCreation() {
 		sourceModels.multipleInterfacesInSamePackageCreation.createAndSynchronize()
@@ -96,7 +92,6 @@ class InterfaceTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Super interfaces
-
 	@Test
 	def void interfaceWithSuperInterfaceCreation() {
 		sourceModels.interfaceWithSuperInterfaceCreation.createAndSynchronize()
@@ -109,6 +104,6 @@ class InterfaceTest extends CBSCommonalitiesExecutionTest {
 		targetModels.interfaceWithMultipleSuperInterfacesCreation.check()
 	}
 
-	// TODO renaming
-	// TODO support for non-public interfaces? (eg. package-private, or private inner interfaces)
+// TODO renaming
+// TODO support for non-public interfaces? (eg. package-private, or private inner interfaces)
 }

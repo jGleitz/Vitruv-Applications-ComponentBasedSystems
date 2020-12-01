@@ -2,15 +2,15 @@ package tools.vitruv.applications.umljava.util
 
 import tools.vitruv.framework.userinteraction.UserInteractor
 import tools.vitruv.framework.userinteraction.UserInteractionOptions.WindowModality
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * This class contains util functions that are not explicit attached to java or uml.
  * 
  * @author Fei
  */
+ @Utility
 class CommonUtil {
-    private new() {}
-    
     /**
      * Displays the given message with the userInteractor.
      * 

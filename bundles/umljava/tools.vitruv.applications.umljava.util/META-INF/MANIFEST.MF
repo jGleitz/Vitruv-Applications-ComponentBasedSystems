@@ -23,11 +23,12 @@ Require-Bundle: com.google.guava,
  tools.vitruv.domains.java.util,
  org.eclipse.uml2.uml,
  org.emftext.language.java,
- org.junit;bundle-version="4.12.0",
  tools.vitruv.domains.java.util.jamoppparser;bundle-version="0.2.0",
  tools.vitruv.testutils;bundle-version="0.2.0",
  edu.kit.ipd.sdq.activextendannotations,
- tools.vitruv.applications.util.temporary;visibility:=reexport
+ tools.vitruv.applications.util.temporary;visibility:=reexport,
+ org.junit.jupiter.api,
+ org.hamcrest.core
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: tools.vitruv.applications.umljava.testutil,
  tools.vitruv.applications.umljava.util

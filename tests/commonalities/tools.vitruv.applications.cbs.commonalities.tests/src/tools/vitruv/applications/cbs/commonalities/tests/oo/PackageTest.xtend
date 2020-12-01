@@ -4,7 +4,6 @@ import java.util.List
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.oo.java.JavaPackageTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.oo.uml.UmlPackageTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModel
@@ -14,6 +13,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParame
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
 
 import static extension tools.vitruv.applications.cbs.commonalities.tests.util.ParameterizedTestUtil.*
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -22,8 +22,8 @@ class PackageTest extends CBSCommonalitiesExecutionTest {
 	@Parameterized.Parameters(name='{0} to {1}')
 	static def List<Object[]> testParameters() {
 		val domainModelsProviders = #[
-			new UmlTestModelsProvider [new UmlPackageTestModels(it)],
-			new JavaTestModelsProvider [new JavaPackageTestModels(it)]
+			new UmlTestModelsProvider[new UmlPackageTestModels(it)],
+			new JavaTestModelsProvider[new JavaPackageTestModels(it)]
 		]
 		return domainModelsProviders.orderedPairs
 	}
@@ -36,7 +36,9 @@ class PackageTest extends CBSCommonalitiesExecutionTest {
 		static val SUB2_PACKAGE_NAME = 'sub2'
 
 		def DomainModel singleRootPackageCreation()
+
 		def DomainModel multiRootPackageCreation()
+
 		def DomainModel subPackagesCreation()
 	}
 
@@ -65,9 +67,9 @@ class PackageTest extends CBSCommonalitiesExecutionTest {
 	def void subPackagesCreation() {
 		sourceModels.subPackagesCreation.createAndSynchronize()
 		targetModels.subPackagesCreation.check()
-		// TODO check that no PCM repository is created for this?
+	// TODO check that no PCM repository is created for this?
 	}
 
-	// TODO package renaming
-	// TODO package moving
+// TODO package renaming
+// TODO package moving
 }

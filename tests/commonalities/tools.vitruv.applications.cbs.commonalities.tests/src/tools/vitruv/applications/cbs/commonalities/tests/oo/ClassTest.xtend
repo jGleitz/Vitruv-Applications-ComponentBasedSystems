@@ -6,7 +6,6 @@ import org.emftext.language.java.modifiers.ModifiersFactory
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.oo.java.JavaClassTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.oo.uml.UmlClassTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModel
@@ -14,6 +13,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModelsProvid
 import tools.vitruv.applications.cbs.commonalities.tests.util.java.JavaTestModelsProvider
 import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParametersRunnerFactory
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -23,7 +23,7 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 	static def List<Object[]> testParameters() {
 		return #[
 			#[
-				new UmlTestModelsProvider [new UmlClassTestModels(it)],
+				new UmlTestModelsProvider[new UmlClassTestModels(it)],
 				new JavaTestModelsProvider [
 					new JavaClassTestModels(it) {
 						// UML creates classes with no visibility by default, which maps to public visibility in Java.
@@ -34,11 +34,11 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 				]
 			],
 			#[
-				new JavaTestModelsProvider [new JavaClassTestModels(it)],
+				new JavaTestModelsProvider[new JavaClassTestModels(it)],
 				new UmlTestModelsProvider [
 					// Java creates classes with package-private visibility by default.
 					new UmlClassTestModels(it) {
-						override protected defaultClassVisibility () {
+						override protected defaultClassVisibility() {
 							return VisibilityKind.PACKAGE_LITERAL
 						}
 					}
@@ -65,7 +65,6 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 		static val INTERFACE_2_NAME = 'IBar'
 
 		// Empty class
-
 		/**
 		 * A class with only the minimally required attributes and the domain's
 		 * default visibility.
@@ -73,15 +72,17 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel emptyClassCreation()
 
 		// Visibility
-
 		def DomainModel privateClassCreation()
+
 		def DomainModel publicClassCreation()
+
 		def DomainModel protectedClassCreation()
+
 		def DomainModel packagePrivateClassCreation()
 
 		// Modifiers
-
 		def DomainModel finalClassCreation()
+
 		def DomainModel abstractClassCreation()
 
 		/**
@@ -97,19 +98,17 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel classWithMultipleModifiersCreation()
 
 		// Multiple classes
-
 		def DomainModel multipleClassesInSamePackageCreation()
+
 		def DomainModel multipleClassesInDifferentPackagesCreation()
 
 		// Super class
-
 		/**
 		 * Class 1 extending class 2 from the same package.
 		 */
 		def DomainModel classWithSuperClassCreation()
 
 		// Implemented interfaces
-
 		/**
 		 * Class 1 implementing interface 1 from the same package.
 		 */
@@ -131,7 +130,6 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Empty class
-
 	@Test
 	def void emptyClassCreation() {
 		sourceModels.emptyClassCreation.createAndSynchronize()
@@ -139,7 +137,6 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Visibility
-
 	@Test
 	def void privateClassCreation() {
 		sourceModels.privateClassCreation.createAndSynchronize()
@@ -165,7 +162,6 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Modifiers
-
 	@Test
 	def void finalClassCreation() {
 		sourceModels.finalClassCreation.createAndSynchronize()
@@ -185,7 +181,6 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Multiple classes
-
 	@Test
 	def void multipleClassesInSamePackageCreation() {
 		sourceModels.multipleClassesInSamePackageCreation.createAndSynchronize()
@@ -199,7 +194,6 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Super class
-
 	@Test
 	def void classWithSuperClassCreation() {
 		sourceModels.classWithSuperClassCreation.createAndSynchronize()
@@ -207,7 +201,6 @@ class ClassTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Implemented interfaces
-
 	@Test
 	def void classImplementingInterfaceCreation() {
 		sourceModels.classImplementingInterfaceCreation.createAndSynchronize()

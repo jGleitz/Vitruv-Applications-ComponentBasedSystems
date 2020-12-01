@@ -4,7 +4,6 @@ import java.util.List
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.java.JavaComponentInterfaceTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.pcm.PcmComponentInterfaceTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.uml.UmlComponentInterfaceTestModels
@@ -16,6 +15,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParame
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
 
 import static extension tools.vitruv.applications.cbs.commonalities.tests.util.ParameterizedTestUtil.*
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -24,9 +24,9 @@ class ComponentInterfaceTest extends CBSCommonalitiesExecutionTest {
 	@Parameterized.Parameters(name='{0} to {1}')
 	static def List<Object[]> testParameters() {
 		val domainModelsProviders = #[
-			new PcmTestModelsProvider [new PcmComponentInterfaceTestModels(it)],
-			new UmlTestModelsProvider [new UmlComponentInterfaceTestModels(it)],
-			new JavaTestModelsProvider [new JavaComponentInterfaceTestModels(it)]
+			new PcmTestModelsProvider[new PcmComponentInterfaceTestModels(it)],
+			new UmlTestModelsProvider[new UmlComponentInterfaceTestModels(it)],
+			new JavaTestModelsProvider[new JavaComponentInterfaceTestModels(it)]
 		]
 		return domainModelsProviders.orderedPairs
 	}
@@ -53,5 +53,5 @@ class ComponentInterfaceTest extends CBSCommonalitiesExecutionTest {
 		targetModels.emptyComponentInterfaceCreation.check()
 	}
 
-	// TODO interface renaming
+// TODO interface renaming
 }

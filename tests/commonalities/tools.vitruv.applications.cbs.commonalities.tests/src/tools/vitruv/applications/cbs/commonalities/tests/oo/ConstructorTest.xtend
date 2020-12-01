@@ -5,7 +5,6 @@ import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.oo.java.JavaConstructorTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.oo.uml.UmlConstructorTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModel
@@ -13,6 +12,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModelsProvid
 import tools.vitruv.applications.cbs.commonalities.tests.util.java.JavaTestModelsProvider
 import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParametersRunnerFactory
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -22,12 +22,12 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 	static def List<Object[]> testParameters() {
 		return #[
 			#[
-				new UmlTestModelsProvider [new UmlConstructorTestModels(it)],
-				new JavaTestModelsProvider [new JavaConstructorTestModels(it)]
+				new UmlTestModelsProvider[new UmlConstructorTestModels(it)],
+				new JavaTestModelsProvider[new JavaConstructorTestModels(it)]
 			],
 			#[
-				new JavaTestModelsProvider [new JavaConstructorTestModels(it)],
-				new UmlTestModelsProvider [new UmlConstructorTestModels(it)]
+				new JavaTestModelsProvider[new JavaConstructorTestModels(it)],
+				new UmlTestModelsProvider[new UmlConstructorTestModels(it)]
 			]
 		]
 	}
@@ -49,7 +49,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 		static val OWN_TYPE_PARAMETER_NAME = 'ownTypeInput'
 
 		// Basic
-
 		/**
 		 * A constructor with only the minimally required attributes (i.e.
 		 * without input parameters).
@@ -57,7 +56,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel basicConstructorCreation()
 
 		// Visibility
-
 		def DomainModel publicConstructorCreation()
 
 		def DomainModel protectedConstructorCreation()
@@ -67,7 +65,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel privateConstructorCreation()
 
 		// Input parameters
-
 		def DomainModel constructorWithIntegerInputCreation()
 
 		/**
@@ -90,7 +87,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel constructorWithMixedInputsCreation()
 
 		// Multiple constructors
-
 		/**
 		 * The first constructor has a boolean input parameter, the second has
 		 * a String input parameter.
@@ -108,7 +104,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Basic
-
 	@Test
 	def void basicConstructorCreation() {
 		sourceModels.basicConstructorCreation.createAndSynchronize()
@@ -116,7 +111,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Visibility
-
 	@Test
 	def void publicConstructorCreation() {
 		sourceModels.publicConstructorCreation.createAndSynchronize()
@@ -142,7 +136,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Input parameters
-
 	@Test
 	def void constructorWithIntegerInputCreation() {
 		sourceModels.constructorWithIntegerInputCreation.createAndSynchronize()
@@ -180,7 +173,6 @@ class ConstructorTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Multiple constructors
-
 	// TODO Does not work yet in the UML->Java direction. Problem: The created Java constructors are first empty. When
 	// adding parameters, we retrieve the target constructor via the correspondence model. However, Java's TUIDs for
 	// constructors without parameters are the same. Result: All parameters get added to the same single constructor.

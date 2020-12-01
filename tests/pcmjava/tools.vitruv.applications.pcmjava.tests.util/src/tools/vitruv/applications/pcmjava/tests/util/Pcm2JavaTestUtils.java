@@ -1,7 +1,5 @@
 package tools.vitruv.applications.pcmjava.tests.util;
 
-import java.io.IOException;
-
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.CompositeComponent;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -28,12 +26,6 @@ public class Pcm2JavaTestUtils {
 
     // private ctor for util class
     private Pcm2JavaTestUtils() {
-    }
-
-    public static Repository createRepository( final String repositoryName) throws IOException {
-        final Repository repo = RepositoryFactory.eINSTANCE.createRepository();
-        repo.setEntityName(repositoryName);
-        return repo;
     }
 
     public static BasicComponent createBasicComponent(final Repository repo, final String name) {

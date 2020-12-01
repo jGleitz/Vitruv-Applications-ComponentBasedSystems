@@ -1,18 +1,15 @@
 package tools.vitruv.applications.pcmjava.tests.ejbtransformations.java2pcm
 
-import org.junit.Test
-
-import static org.junit.Assert.assertEquals
+import org.junit.jupiter.api.Test
 
 class EjbClassMappingTest extends EjbJava2PcmTransformationTest { 
-	
 	@Test
 	def testCreateClassAndAddStatelessAnnotation(){ 
 		super.addRepoContractsAndDatatypesPackage()
 		
 		val correspondingBasicComponent = createEjbClass(TEST_CLASS_NAME)
 		
-		assertEquals("Created component has different name as added class", correspondingBasicComponent.entityName, TEST_CLASS_NAME)
+		assertThat("Created component has different name as added class", correspondingBasicComponent.entityName, is(TEST_CLASS_NAME))
 	}
 	
 	@Test

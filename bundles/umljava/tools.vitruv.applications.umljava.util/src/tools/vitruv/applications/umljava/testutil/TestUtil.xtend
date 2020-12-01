@@ -32,18 +32,16 @@ import static tools.vitruv.applications.util.temporary.java.JavaTypeUtil.*
 import static tools.vitruv.applications.util.temporary.uml.UmlClassifierAndPackageUtil.*
 import static tools.vitruv.applications.umljava.testutil.JavaTestUtil.*
 import static tools.vitruv.applications.umljava.testutil.UmlTestUtil.*
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * Util class for assertions that works bidirectional.
  * 
  */
+ @Utility
 class TestUtil {
 	
 	static val logger = Logger.getLogger(TestUtil)
-	
-	private new() {
-		
-	}
 	
 	/**
 	 * Does not compare the methods and attributes of the classes

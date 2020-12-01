@@ -4,7 +4,6 @@ import java.util.List
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.oo.java.JavaClassMethodTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.oo.uml.UmlClassMethodTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModel
@@ -12,6 +11,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModelsProvid
 import tools.vitruv.applications.cbs.commonalities.tests.util.java.JavaTestModelsProvider
 import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParametersRunnerFactory
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -21,12 +21,12 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	static def List<Object[]> testParameters() {
 		return #[
 			#[
-				new UmlTestModelsProvider [new UmlClassMethodTestModels(it)],
-				new JavaTestModelsProvider [new JavaClassMethodTestModels(it)]
+				new UmlTestModelsProvider[new UmlClassMethodTestModels(it)],
+				new JavaTestModelsProvider[new JavaClassMethodTestModels(it)]
 			],
 			#[
-				new JavaTestModelsProvider [new JavaClassMethodTestModels(it)],
-				new UmlTestModelsProvider [new UmlClassMethodTestModels(it)]
+				new JavaTestModelsProvider[new JavaClassMethodTestModels(it)],
+				new UmlTestModelsProvider[new UmlClassMethodTestModels(it)]
 			]
 		]
 	}
@@ -50,7 +50,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 		static val OWN_TYPE_PARAMETER_NAME = 'ownTypeInput'
 
 		// Basic
-
 		/**
 		 * A method with only the minimally required attributes (i.e. without
 		 * input or return parameters).
@@ -58,7 +57,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel basicClassMethodCreation()
 
 		// Visibility
-
 		def DomainModel publicClassMethodCreation()
 
 		def DomainModel protectedClassMethodCreation()
@@ -68,7 +66,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel privateClassMethodCreation()
 
 		// Modifiers
-
 		def DomainModel finalClassMethodCreation()
 
 		def DomainModel abstractClassMethodCreation()
@@ -76,7 +73,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel staticClassMethodCreation()
 
 		// Return type
-
 		/**
 		 * Class method with integer return type and no inputs.
 		 */
@@ -92,7 +88,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel classMethodWithSelfReturnCreation()
 
 		// Input parameters
-
 		def DomainModel classMethodWithIntegerInputCreation()
 
 		/**
@@ -115,7 +110,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel classMethodWithMixedInputsCreation()
 
 		// Mixed input and return types
-
 		/**
 		 * Class method with an integer, String and class input parameter and
 		 * an integer return type.
@@ -123,7 +117,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel classMethodWithMixedInputsAndReturnCreation()
 
 		// Multiple methods
-
 		/**
 		 * Both methods have an integer return type. The first method has a
 		 * boolean input parameter, the second has a String input parameter.
@@ -141,7 +134,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Basic
-
 	@Test
 	def void basicClassMethodCreation() {
 		sourceModels.basicClassMethodCreation.createAndSynchronize()
@@ -149,7 +141,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Visibility
-
 	@Test
 	def void publicClassMethodCreation() {
 		sourceModels.publicClassMethodCreation.createAndSynchronize()
@@ -175,7 +166,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Modifiers
-
 	@Test
 	def void finalClassMethodCreation() {
 		sourceModels.finalClassMethodCreation.createAndSynchronize()
@@ -195,7 +185,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Return type
-
 	@Test
 	def void classMethodWithIntegerReturnCreation() {
 		sourceModels.classMethodWithIntegerReturnCreation.createAndSynchronize()
@@ -221,7 +210,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Input parameters
-
 	@Test
 	def void classMethodWithIntegerInputCreation() {
 		sourceModels.classMethodWithIntegerInputCreation.createAndSynchronize()
@@ -259,7 +247,6 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Mixed input and return types
-
 	@Test
 	def void classMethodWithMixedInputsAndReturnCreation() {
 		sourceModels.classMethodWithMixedInputsAndReturnCreation.createAndSynchronize()
@@ -267,13 +254,12 @@ class ClassMethodTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Multiple methods
-
 	@Test
 	def void multipleClassMethodsCreation() {
 		sourceModels.multipleClassMethodsCreation.createAndSynchronize()
 		targetModels.multipleClassMethodsCreation.check()
 	}
 
-	// TODO rename
-	// TODO parameter changes
+// TODO rename
+// TODO parameter changes
 }

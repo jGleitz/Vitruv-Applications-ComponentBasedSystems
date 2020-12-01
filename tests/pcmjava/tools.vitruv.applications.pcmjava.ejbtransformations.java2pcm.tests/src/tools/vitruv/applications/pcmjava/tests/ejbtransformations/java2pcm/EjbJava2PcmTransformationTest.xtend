@@ -10,7 +10,6 @@ import tools.vitruv.applications.pcmjava.ejbtransformations.java2pcm.change2comm
  * class that contains special methods for EJB testing
  */
 abstract class EjbJava2PcmTransformationTest extends Java2PcmTransformationTest {
-	
 	public static val String STATELESS_ANNOTATION_NAME = "Stateless"
 	public static val String REMOTE_ANNOTATION_NAME = "Remote"
 	public static val String EJB_FIELD_ANNOTATION_NAME = "EJB"
@@ -19,7 +18,7 @@ abstract class EjbJava2PcmTransformationTest extends Java2PcmTransformationTest 
 	protected static val String TEST_INTERFACE_NAME = "TestEJBInterface"
 	protected static val String TEST_FIELD_NAME = "testEJBfield"
 	
-	override protected createChangePropagationSpecifications() {
+	override protected getChangePropagationSpecifications() {
 		return #[new EjbJava2PcmChangePropagationSpecification()];
 	}
 	
@@ -45,5 +44,4 @@ abstract class EjbJava2PcmTransformationTest extends Java2PcmTransformationTest 
 		super.addRepoContractsAndDatatypesPackage()
 		this.createEjbInterface(TEST_INTERFACE_NAME)
 	}
-	
 }

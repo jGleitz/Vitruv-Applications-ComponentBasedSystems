@@ -6,7 +6,6 @@ import org.emftext.language.java.modifiers.ModifiersFactory
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.oo.java.JavaClassPropertyTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.oo.uml.UmlClassPropertyTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModel
@@ -14,6 +13,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.DomainModelsProvid
 import tools.vitruv.applications.cbs.commonalities.tests.util.java.JavaTestModelsProvider
 import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParametersRunnerFactory
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -23,7 +23,7 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 	static def List<Object[]> testParameters() {
 		return #[
 			#[
-				new UmlTestModelsProvider [new UmlClassPropertyTestModels(it)],
+				new UmlTestModelsProvider[new UmlClassPropertyTestModels(it)],
 				new JavaTestModelsProvider [
 					new JavaClassPropertyTestModels(it) {
 						// UML creates properties with no visibility by default, which maps to public visibility in Java.
@@ -34,11 +34,11 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 				]
 			],
 			#[
-				new JavaTestModelsProvider [new JavaClassPropertyTestModels(it)],
+				new JavaTestModelsProvider[new JavaClassPropertyTestModels(it)],
 				new UmlTestModelsProvider [
 					// Java creates fields with package-private visibility by default.
 					new UmlClassPropertyTestModels(it) {
-						override protected defaultPropertyVisibility () {
+						override protected defaultPropertyVisibility() {
 							return VisibilityKind.PACKAGE_LITERAL
 						}
 					}
@@ -67,7 +67,6 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 		static val STRING_PROPERTY_NAME = 'someString'
 
 		// Basic
-
 		/**
 		 * A property with only the minimally required attributes and the
 		 * domain's default visibility.
@@ -75,15 +74,17 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel basicPrimitiveClassPropertyCreation()
 
 		// Visibility
-
 		def DomainModel privateClassPropertyCreation()
+
 		def DomainModel publicClassPropertyCreation()
+
 		def DomainModel protectedClassPropertyCreation()
+
 		def DomainModel packagePrivateClassPropertyCreation()
 
 		// Modifiers
-
 		def DomainModel finalClassPropertyCreation()
+
 		def DomainModel staticClassPropertyCreation()
 
 		/**
@@ -97,11 +98,9 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel classPropertyWithMultipleModifiersCreation()
 
 		// Type references
-
 		def DomainModel stringClassPropertyCreation()
 
 		// Multiple properties
-
 		/**
 		 * One property for each of the following primitive types:
 		 * <ul>
@@ -124,7 +123,6 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Basic
-
 	@Test
 	def void basicPrimitiveClassPropertyCreation() {
 		sourceModels.basicPrimitiveClassPropertyCreation.createAndSynchronize()
@@ -132,7 +130,6 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Visibility
-
 	@Test
 	def void privateClassPropertyCreation() {
 		sourceModels.privateClassPropertyCreation.createAndSynchronize()
@@ -158,7 +155,6 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Modifiers
-
 	@Test
 	def void finalClassPropertyCreation() {
 		sourceModels.finalClassPropertyCreation.createAndSynchronize()
@@ -178,7 +174,6 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Type references
-
 	@Test
 	def void stringClassPropertyCreation() {
 		sourceModels.stringClassPropertyCreation.createAndSynchronize()
@@ -186,16 +181,14 @@ class ClassPropertyTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Multiple properties
-
 	@Test
 	def void multipleClassesInDifferentPackagesCreation() {
 		sourceModels.multiplePrimitiveClassPropertiesCreation.createAndSynchronize()
 		targetModels.multiplePrimitiveClassPropertiesCreation.check()
 	}
 
-	// TODO other data types: Classes, interfaces
-
-	// TODO collection data types
-	// TODO enums
-	// TODO primitive wrapper types
+// TODO other data types: Classes, interfaces
+// TODO collection data types
+// TODO enums
+// TODO primitive wrapper types
 }

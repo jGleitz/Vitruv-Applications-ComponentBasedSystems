@@ -27,16 +27,15 @@ import static org.junit.Assert.*
 import static tools.vitruv.applications.util.temporary.uml.UmlClassifierAndPackageUtil.*
 import static org.hamcrest.CoreMatchers.*
 import static org.hamcrest.MatcherAssert.assertThat
+import edu.kit.ipd.sdq.activextendannotations.Utility
 
 /**
  * Class for assertions that only involves uml elements.
  * 
  * @author Fei
  */
+ @Utility
 class UmlTestUtil {
-    private new() {
-    }
-    
     /**
      * Asserts that the given class has the given traits. Does not check operations/attributes of the class.
      * 

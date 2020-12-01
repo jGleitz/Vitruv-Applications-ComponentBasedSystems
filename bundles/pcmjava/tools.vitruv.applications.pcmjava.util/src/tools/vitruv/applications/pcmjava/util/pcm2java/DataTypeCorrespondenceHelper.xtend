@@ -19,6 +19,7 @@ import tools.vitruv.framework.correspondence.CorrespondenceModel
 import static extension edu.kit.ipd.sdq.commons.util.java.lang.IterableUtil.*
 import static tools.vitruv.domains.java.util.JavaModificationUtil.*
 import org.eclipse.emf.ecore.util.EcoreUtil
+import static tools.vitruv.applications.cbs.testutils.JavaModelCreators.java
 
 /**
  * Mapping transformation for primitive data types
@@ -60,10 +61,9 @@ class DataTypeCorrespondenceHelper { // FIXME TS this seems to be a utility clas
 		return EcoreUtil.copy(primitveTypeMappingMap.claimValueForKey(pdt.type))
 	}
 
-	static def TypeReference claimUniqueCorrespondingJaMoPPDataTypeReference(DataType dataType,
-		CorrespondenceModel ci) {
+	static def TypeReference claimUniqueCorrespondingJaMoPPDataTypeReference(CorrespondenceModel ci, DataType dataType) {
 		if (null === dataType) {
-			return TypesFactory.eINSTANCE.createVoid
+			return java.types.Void
 		}
 		val Type type = claimUniqueCorrespondingType(dataType, ci)
 		if (type instanceof TypeReference) {
@@ -71,10 +71,8 @@ class DataTypeCorrespondenceHelper { // FIXME TS this seems to be a utility clas
 		} else if (type instanceof ConcreteClassifier) {
 			return createNamespaceClassifierReference(type as ConcreteClassifier)
 		}
-		logger.warn(
-			"found type " + type +
-				"is neither a TypeReference nor a ConcreteClassifier - could not create and return TypeReference")
-		return TypesFactory.eINSTANCE.createClassifierReference
+		logger.warn( '''found type «type» is neither a TypeReference nor a ConcreteClassifier - could not create and return TypeReference''')
+		return java.types.ClassifierReference
 	}
 
 	private static def dispatch Type claimUniqueCorrespondingType(CollectionDataType cdt, CorrespondenceModel ci) {

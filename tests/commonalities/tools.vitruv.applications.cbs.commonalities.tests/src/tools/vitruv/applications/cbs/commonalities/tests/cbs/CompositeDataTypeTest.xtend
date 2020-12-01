@@ -4,7 +4,6 @@ import java.util.List
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tools.vitruv.applications.cbs.commonalities.tests.CBSCommonalitiesExecutionTest
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.java.JavaCompositeDataTypeTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.pcm.PcmCompositeDataTypeTestModels
 import tools.vitruv.applications.cbs.commonalities.tests.cbs.uml.UmlCompositeDataTypeTestModels
@@ -16,6 +15,7 @@ import tools.vitruv.applications.cbs.commonalities.tests.util.runner.XtextParame
 import tools.vitruv.applications.cbs.commonalities.tests.util.uml.UmlTestModelsProvider
 
 import static extension tools.vitruv.applications.cbs.commonalities.tests.util.ParameterizedTestUtil.*
+import tools.vitruv.applications.cbs.commonalities.tests.util.CBSCommonalitiesExecutionTest
 
 @RunWith(Parameterized)
 @Parameterized.UseParametersRunnerFactory(XtextParametersRunnerFactory)
@@ -24,9 +24,9 @@ class CompositeDataTypeTest extends CBSCommonalitiesExecutionTest {
 	@Parameterized.Parameters(name='{0} to {1}')
 	static def List<Object[]> testParameters() {
 		val domainModelsProviders = #[
-			new PcmTestModelsProvider [new PcmCompositeDataTypeTestModels(it)],
-			new UmlTestModelsProvider [new UmlCompositeDataTypeTestModels(it)],
-			new JavaTestModelsProvider [new JavaCompositeDataTypeTestModels(it)]
+			new PcmTestModelsProvider[new PcmCompositeDataTypeTestModels(it)],
+			new UmlTestModelsProvider[new UmlCompositeDataTypeTestModels(it)],
+			new JavaTestModelsProvider[new JavaCompositeDataTypeTestModels(it)]
 		]
 		return domainModelsProviders.orderedPairs
 	}
@@ -43,14 +43,15 @@ class CompositeDataTypeTest extends CBSCommonalitiesExecutionTest {
 		static val COMPOSITE_ELEMENT_2_NAME = 'compositeElement2'
 
 		// Empty CompositeDataType
-
 		def DomainModel emptyCompositeDataTypeCreation()
 
 		// Primitive inner elements
-
 		def DomainModel compositeDataTypeWithBooleanElementCreation()
+
 		def DomainModel compositeDataTypeWithIntegerElementCreation()
+
 		def DomainModel compositeDataTypeWithDoubleElementCreation()
+
 		def DomainModel compositeDataTypeWithStringElementCreation()
 
 		/**
@@ -66,7 +67,6 @@ class CompositeDataTypeTest extends CBSCommonalitiesExecutionTest {
 		def DomainModel compositeDataTypeWithWithMultiplePrimitiveElementsCreation()
 
 		// Multiple CompositeDataTypes
-
 		/**
 		 * Two composite data types, one with a <code>boolean</code> typed
 		 * element and one with an <code>integer</code> typed element.
@@ -91,7 +91,6 @@ class CompositeDataTypeTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Empty CompositeDataType
-
 	@Test
 	def void emptyCompositeDataTypeCreation() {
 		sourceModels.emptyCompositeDataTypeCreation.createAndSynchronize()
@@ -99,7 +98,6 @@ class CompositeDataTypeTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Primitive inner elements
-
 	@Test
 	def void compositeDataTypeWithBooleanElementCreation() {
 		sourceModels.compositeDataTypeWithBooleanElementCreation.createAndSynchronize()
@@ -131,7 +129,6 @@ class CompositeDataTypeTest extends CBSCommonalitiesExecutionTest {
 	}
 
 	// Multiple CompositeDataTypes
-
 	@Test
 	def void multipleCompositeDataTypesWithPrimitiveElementsCreation() {
 		sourceModels.multipleCompositeDataTypesWithPrimitiveElementsCreation.createAndSynchronize()
@@ -144,5 +141,5 @@ class CompositeDataTypeTest extends CBSCommonalitiesExecutionTest {
 		targetModels.compositeDataTypeWithCompositeElementsCreation.check()
 	}
 
-	// TODO renaming
+// TODO renaming
 }

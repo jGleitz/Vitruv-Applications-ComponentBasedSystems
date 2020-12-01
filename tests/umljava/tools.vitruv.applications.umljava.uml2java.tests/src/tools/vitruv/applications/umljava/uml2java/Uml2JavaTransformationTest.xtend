@@ -7,7 +7,11 @@ import org.eclipse.uml2.uml.UMLFactory
 
 import static tools.vitruv.domains.java.util.JavaPersistenceHelper.*
 import org.eclipse.uml2.uml.Operation
-import tools.vitruv.applications.umljava.testutil.AbstractUmlJavaTest
+import tools.vitruv.testutils.VitruvApplicationTest
+import org.junit.jupiter.api.BeforeEach
+import tools.vitruv.testutils.domains.DomainUtil
+import tools.vitruv.domains.uml.UmlDomainProvider
+import java.nio.file.Path
 
 /**
  * Abstract super class for uml to java test cases.
@@ -15,32 +19,23 @@ import tools.vitruv.applications.umljava.testutil.AbstractUmlJavaTest
  * 
  * @author Fei
  */
-abstract class Uml2JavaTransformationTest extends AbstractUmlJavaTest {
-    protected static val Logger logger = Logger.getLogger(typeof(Uml2JavaTransformationTest).simpleName);
+abstract class Uml2JavaTransformationTest extends VitruvApplicationTest {
+    protected static val final Logger logger = Logger.getLogger(typeof(Uml2JavaTransformationTest).simpleName);
     
-	static val MODEL_FILE_EXTENSION = "uml";
-	static val MODEL_NAME = "model"; //name of the uml rootmodel
+	static val UML_MODEL = DomainUtil.getModelFileName(Path.of("model", "model"), new UmlDomainProvider)
 
-	private def String getProjectModelPath(String modelName) {
-		"model/" + modelName + "." + MODEL_FILE_EXTENSION;
-	}
-	
-	protected def Model getRootElement() {
-		return getFirstRootElement(MODEL_NAME.projectModelPath) as Model;
-	}
-	
-	override protected createChangePropagationSpecifications() {
+	override protected getChangePropagationSpecifications() {
 		return #[new UmlToJavaChangePropagationSpecification()]; 
 	}
 
-	override protected cleanup() {
-        
-    }
-    
-    override protected setup() {
+	@BeforeEach
+    def createUmlModel() {
+    	resourceAt(UML_MODEL).propagate [
+    		contents += 
+    	]
         val umlModel = UMLFactory.eINSTANCE.createModel();
-        umlModel.name = MODEL_NAME;
-        createAndSynchronizeModel(MODEL_NAME.projectModelPath, umlModel);
+        umlModel.name = tools.vitruv.applications.umljava.uml2java.Uml2JavaTransformationTest.UML_MODEL;
+        createAndSynchronizeModel(tools.vitruv.applications.umljava.uml2java.Uml2JavaTransformationTest.UML_MODEL.projectModelPath, umlModel);
     }
 
 	def protected assertJavaFileExists(String fileName, String[] namespaces) {

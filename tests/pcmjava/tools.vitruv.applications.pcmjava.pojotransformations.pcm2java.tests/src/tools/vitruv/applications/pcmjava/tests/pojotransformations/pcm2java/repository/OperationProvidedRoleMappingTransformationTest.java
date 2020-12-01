@@ -107,7 +107,7 @@ public class OperationProvidedRoleMappingTransformationTest extends Pcm2JavaTran
 
 	@Test
 	public void testOperationProvidedRoleToSystem() throws Throwable {
-		final Repository repo = super.createAndSyncRepository(Pcm2JavaTestUtils.REPOSITORY_NAME);
+		final Repository repo = super.initRepository(Pcm2JavaTestUtils.REPOSITORY_NAME);
 		final OperationInterface opInterface = super.addInterfaceToReposiotryAndSync(repo,
 				Pcm2JavaTestUtils.INTERFACE_NAME);
 		final org.palladiosimulator.pcm.system.System system = super.createAndSyncSystem(Pcm2JavaTestUtils.SYSTEM_NAME);
